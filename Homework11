@@ -1,18 +1,10 @@
 class FormulaError(Exception):
-    """
-    Raised when the input data does not consists of 3 elements.
-    """
 
     def __init__(self, message='Must be a number', *args, **kwargs):
         super().__init__(message, *args, **kwargs)
 
 
 def parse_input(user_input):
-    """
-    Пытаемся конвертировать пользовательский ввод в float.
-    :param user_input: str
-    :return:  float, str, float
-    """
     input_list = user_input.split()  # default - space
     if len(input_list) != 3:
         raise FormulaError('Input does not consist of 3 elements')
@@ -31,10 +23,14 @@ def add(number1, number2):
 def multiply(number1, number2):
     return number1 * number2
 
-# TODO: add divide and subtract
+def subtraction(number1, number2):
+    return number1 - number2
+
+def division(number1, number2):
+    return number1 / number2
 
 
-operations = {'+': add, '*': multiply}
+operations = {'+': add, '*': multiply, '-': subtraction, '/': division}
 
 
 def calculate(num1, operator, num2):
